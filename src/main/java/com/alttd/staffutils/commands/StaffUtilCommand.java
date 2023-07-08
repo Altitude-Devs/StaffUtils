@@ -1,6 +1,8 @@
 package com.alttd.staffutils.commands;
 
 import com.alttd.staffutils.StaffUtils;
+import com.alttd.staffutils.commands.staffutils_subcommands.ItemLore;
+import com.alttd.staffutils.commands.staffutils_subcommands.ItemName;
 import com.alttd.staffutils.commands.staffutils_subcommands.Reload;
 import com.alttd.staffutils.commands.staffutils_subcommands.Top;
 import com.alttd.staffutils.config.Messages;
@@ -30,7 +32,9 @@ public class StaffUtilCommand implements CommandExecutor, TabExecutor {
 
         subCommands = Arrays.asList(
                 new Reload(staffUtils),
-                new Top()
+                new Top(),
+                new ItemName(),
+                new ItemLore()
         );
     }
 
