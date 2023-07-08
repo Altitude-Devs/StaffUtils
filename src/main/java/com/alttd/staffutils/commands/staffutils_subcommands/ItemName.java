@@ -2,7 +2,9 @@ package com.alttd.staffutils.commands.staffutils_subcommands;
 
 import com.alttd.staffutils.commands.SubCommand;
 import com.alttd.staffutils.config.Messages;
+import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -41,7 +43,10 @@ public class ItemName extends SubCommand {
         else
             name = String.join(" ", Arrays.copyOfRange(args, 1, args.length));
 
-        itemMeta.displayName(miniMessage.deserialize(name));
+        Component newName = miniMessage.deserialize(name);
+        itemMeta.displayName(newName);
+        itemStack.setItemMeta(itemMeta);
+        player.sendMiniMessage(Messages.ITEM_NAME.DONE, Placeholder.component("name", newName));
         return true;
     }
 

@@ -42,14 +42,14 @@ public class ItemLore extends SubCommand {
         ItemMeta meta = itemStack.getItemMeta();
 
         if (meta == null) {
-            player.sendMiniMessage(Messages.LORE.CAN_NOT_HAVE_LORE, null);
+            player.sendMiniMessage(Messages.ITEM_LORE.CAN_NOT_HAVE_LORE, null);
             return true;
         }
 
         if (args[1].matches("\\d+")) { // Check if the first argument is a number
-            int line = Integer.parseInt(args[0]);
+            int line = Integer.parseInt(args[1]);
             if (line > 9 || line < 0) {
-                player.sendMiniMessage(Messages.LORE.INVALID_LINE_NUMBER, null);
+                player.sendMiniMessage(Messages.ITEM_LORE.INVALID_LINE_NUMBER, null);
                 return true;
             }
 
@@ -58,7 +58,7 @@ public class ItemLore extends SubCommand {
                 return true;
             meta = optionalItemMeta.get();
         } else {
-            String loreText = String.join(" ", args);
+            String loreText = String.join(" ", Arrays.copyOfRange(args, 1, args.length));
             List<String> lore = Arrays.asList(loreText.split("\\\\n"));
             meta.lore(lore.stream()
                     .map(miniMessage::deserialize)
@@ -67,12 +67,12 @@ public class ItemLore extends SubCommand {
 
         List<Component> lore = meta.lore();
         if (lore == null) {
-            commandSender.sendMiniMessage(Messages.LORE.FAILED_SETTING_LORE, null);
+            commandSender.sendMiniMessage(Messages.ITEM_LORE.FAILED_SETTING_LORE, null);
             return true;
         }
 
         itemStack.setItemMeta(meta);
-        player.sendMiniMessage(Messages.LORE.DONE, Placeholder.component("lore", Component.join(JoinConfiguration.newlines(), lore)));
+        player.sendMiniMessage(Messages.ITEM_LORE.DONE, Placeholder.component("lore", Component.join(JoinConfiguration.newlines(), lore)));
         return true;
     }
 
@@ -85,7 +85,7 @@ public class ItemLore extends SubCommand {
         }
 
         if (line > lore.size()) {
-            commandSender.sendMiniMessage(Messages.LORE.INVALID_LINE_NUMBER, null);
+            commandSender.sendMiniMessage(Messages.ITEM_LORE.INVALID_LINE_NUMBER, null);
             return Optional.empty();
         }
 

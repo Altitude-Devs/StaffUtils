@@ -1,4 +1,12 @@
 name: StaffUtils
 version: '${version}'
 main: com.alttd.staffutils.StaffUtils
-api-version: 1.20
+api-version: '1.20'
+commands:
+  staffutils:
+    description: Base command for staff utils
+    permission: staffutils.use
+    usage: /staffutils
+    aliases:
+      - su
+

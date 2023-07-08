@@ -1,7 +1,6 @@
 package com.alttd.staffutils.config;
 
 import com.alttd.staffutils.util.Logger;
-import net.kyori.adventure.text.Component;
 
 import java.io.File;
 
@@ -81,9 +80,9 @@ public class Messages extends AbstractConfig {
         }
     }
 
-    public static class LORE {
+    public static class ITEM_LORE {
 
-        private static final String prefix = "su-command.lore.";
+        private static final String prefix = "su-command.item-lore.";
 
         public static String CAN_NOT_HAVE_LORE = "<red>This item cannot have lore</red>";
         public static String INVALID_LINE_NUMBER = "<red>Invalid line number</red>";
@@ -95,6 +94,16 @@ public class Messages extends AbstractConfig {
             CAN_NOT_HAVE_LORE = config.getString(prefix, "can-not-have-lore", CAN_NOT_HAVE_LORE);
             INVALID_LINE_NUMBER = config.getString(prefix, "invalid-line-number", INVALID_LINE_NUMBER);
             FAILED_SETTING_LORE = config.getString(prefix, "failed-setting-lore", FAILED_SETTING_LORE);
+            DONE = config.getString(prefix, "done", DONE);
+        }
+    }
+
+    public static class ITEM_NAME {
+        private static final String prefix = "su-command.item-name.";
+        public static String DONE = "<green>Set new item name to:</green> <lore>";
+
+        @SuppressWarnings("unused")
+        private static void load() {
             DONE = config.getString(prefix, "done", DONE);
         }
     }
