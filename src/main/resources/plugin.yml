@@ -1,0 +1,4 @@
+name: StaffUtils
+version: '${version}'
+main: com.alttd.staffutils.StaffUtils
+api-version: 1.20
