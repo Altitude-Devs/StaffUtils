@@ -15,6 +15,7 @@ public final class StaffUtils extends JavaPlugin {
         this.logger = new Logger(getLogger());
         registerCommands();
         registerEvents();
+        reloadConfigs();
     }
 
     @Override

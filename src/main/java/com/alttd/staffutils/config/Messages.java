@@ -32,6 +32,9 @@ public class Messages extends AbstractConfig {
         public static String TOP = "<green>Teleports you to the highest location above you: <gold>/su top</gold></green>";
         public static String ITEM_NAME = "<green>Renames an item with the name you provide: <gold>/su itemname <name></gold></green>";
         public static String ITEM_LORE = "<green>Modify lore on an item with the lore you provide: <gold>/su itemlore [line] <lore></gold></green>";
+        public static String RIDE = "<green>Ride the entity you're looking at: <gold>/su ride</gold></green>";
+        public static String UPPIES = "<green>Carry the entity you're looking at: <gold>/su uppies</gold></green>";
+        public static String SHAKE = "<green>Shake of all your passengers: <gold>/su shake</gold></green>";
 
         @SuppressWarnings("unused")
         private static void load() {
@@ -40,6 +43,9 @@ public class Messages extends AbstractConfig {
             RELOAD = config.getString(prefix, "reload", RELOAD);
             TOP = config.getString(prefix, "top", TOP);
             ITEM_NAME = config.getString(prefix, "item-name", ITEM_NAME);
+            RIDE = config.getString(prefix, "ride", RIDE);
+            UPPIES = config.getString(prefix, "uppies", UPPIES);
+            SHAKE = config.getString(prefix, "shake", SHAKE);
         }
     }
 
@@ -105,6 +111,67 @@ public class Messages extends AbstractConfig {
         @SuppressWarnings("unused")
         private static void load() {
             DONE = config.getString(prefix, "done", DONE);
+        }
+    }
+
+    public static class RIDE {
+        private static final String prefix = "su-command.ride.";
+
+        public static String NO_TARGET = "<red>No target found to ride</red>";
+        public static String ALREADY_HAS_PASSENGER = "<red><name> already has a passenger</red>";
+        public static String UNABLE_TO_ADD_PASSENGER = "<red>Failed to add you as a passenger for <name></red>";
+        public static String NOW_RIDING = "<green>Now riding <name></green>";
+
+        @SuppressWarnings("unused")
+        private static void load() {
+            NO_TARGET = config.getString(prefix, "no-target", NO_TARGET);
+            ALREADY_HAS_PASSENGER = config.getString(prefix, "already-has-passenger", ALREADY_HAS_PASSENGER);
+            UNABLE_TO_ADD_PASSENGER = config.getString(prefix, "unable-to-add-passenger", UNABLE_TO_ADD_PASSENGER);
+            NOW_RIDING = config.getString(prefix, "now-riding", NOW_RIDING);
+        }
+    }
+
+    public static class UPPIES {
+        private static final String prefix = "su-command.uppies.";
+
+        public static String NO_TARGET = "<red>No target found to carry</red>";
+        public static String UNABLE_TO_ADD_PASSENGER = "<red>Failed to add <name> as your passenger</red>";
+        public static String ALREADY_HAVE_PASSENGER = "<red>You already have a passenger (<name>)</red>";
+        public static String NOW_CARRYING = "<green>Now carrying <name></green>";
+        public static String NOW_RIDING = "<green>Now riding <name></green>";
+
+        @SuppressWarnings("unused")
+        private static void load() {
+            NO_TARGET = config.getString(prefix, "no-target", NO_TARGET);
+            UNABLE_TO_ADD_PASSENGER = config.getString(prefix, "unable-to-add-passenger", UNABLE_TO_ADD_PASSENGER);
+            ALREADY_HAVE_PASSENGER = config.getString(prefix, "already-have-passenger", ALREADY_HAVE_PASSENGER);
+            NOW_CARRYING = config.getString(prefix, "now-carrying", NOW_CARRYING);
+            NOW_RIDING = config.getString(prefix, "now-riding", NOW_RIDING);
+        }
+    }
+
+    public static class SHAKE {
+        private static final String prefix = "su-command.shake.";
+        public static String NO_PASSENGERS = "<red>You have no passengers</red>";
+        public static String DONE = "<green>You shook off all your passengers</green>";
+
+
+        @SuppressWarnings("unused")
+        private static void load() {
+            NO_PASSENGERS = config.getString(prefix, "no-passengers", NO_PASSENGERS);
+            DONE = config.getString(prefix, "done", DONE);
+        }
+    }
+
+    public static class SUDO {
+        private static final String prefix = "su-command.sudo.";
+        public static String INVALID_PLAYER = "<red><player> is not a valid player</red>";
+        public static String CAN_NOT_SUDO_THIS_PLAYER = "<red><player> can not be sudo'd</red>";
+        public static String SUCCESS = "<green>Successfully sudo'd <player>";
+
+
+        @SuppressWarnings("unused")
+        private static void load() {
         }
     }
 }

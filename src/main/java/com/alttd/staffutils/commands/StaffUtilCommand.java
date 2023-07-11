@@ -1,10 +1,7 @@
 package com.alttd.staffutils.commands;
 
 import com.alttd.staffutils.StaffUtils;
-import com.alttd.staffutils.commands.staffutils_subcommands.ItemLore;
-import com.alttd.staffutils.commands.staffutils_subcommands.ItemName;
-import com.alttd.staffutils.commands.staffutils_subcommands.Reload;
-import com.alttd.staffutils.commands.staffutils_subcommands.Top;
+import com.alttd.staffutils.commands.staffutils_subcommands.*;
 import com.alttd.staffutils.config.Messages;
 import com.alttd.staffutils.util.Logger;
 import org.bukkit.command.*;
@@ -34,7 +31,11 @@ public class StaffUtilCommand implements CommandExecutor, TabExecutor {
                 new Reload(staffUtils),
                 new Top(),
                 new ItemName(),
-                new ItemLore()
+                new ItemLore(),
+                new Ride(),
+                new Uppies(),
+                new Shake(),
+                new Sudo()
         );
     }
 
