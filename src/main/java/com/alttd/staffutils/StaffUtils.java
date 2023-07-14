@@ -3,12 +3,14 @@ package com.alttd.staffutils;
 import com.alttd.staffutils.commands.StaffUtilCommand;
 import com.alttd.staffutils.config.Config;
 import com.alttd.staffutils.config.Messages;
+import com.alttd.staffutils.events.AliasOverwrite;
 import com.alttd.staffutils.util.Logger;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class StaffUtils extends JavaPlugin {
 
     private Logger logger;
+    private StaffUtilCommand staffUtilCommand;
 
     @Override
     public void onEnable() {
@@ -23,11 +25,11 @@ public final class StaffUtils extends JavaPlugin {
     }
 
     private void registerCommands() {
-        new StaffUtilCommand(this, logger);
+        staffUtilCommand = new StaffUtilCommand(this, logger);
     }
 
     private void registerEvents() {
-//        getServer().getPluginManager().registerEvents(, this);
+        getServer().getPluginManager().registerEvents(new AliasOverwrite(staffUtilCommand, logger), this);
     }
 
     public void reloadConfigs() {

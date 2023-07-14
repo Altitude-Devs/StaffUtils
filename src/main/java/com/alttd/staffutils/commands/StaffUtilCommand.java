@@ -11,6 +11,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class StaffUtilCommand implements CommandExecutor, TabExecutor {
@@ -49,10 +50,11 @@ public class StaffUtilCommand implements CommandExecutor, TabExecutor {
             return true;
         }
 
-        SubCommand subCommand = getSubCommand(args[0]);
-        if (subCommand == null)
+        Optional<SubCommand> optionalSubCommand = getSubCommand(args[0]);
+        if (optionalSubCommand.isEmpty())
             return false;
 
+        SubCommand subCommand = optionalSubCommand.get();
         if (!commandSender.hasPermission(subCommand.getPermission())) {
             commandSender.sendMiniMessage(Messages.GENERIC.NO_PERMISSION, null);
             return true;
@@ -77,8 +79,11 @@ public class StaffUtilCommand implements CommandExecutor, TabExecutor {
                     .toList()
             );
         } else {
-            SubCommand subCommand = getSubCommand(args[0]);
-            if (subCommand != null && commandSender.hasPermission(subCommand.getPermission()))
+            Optional<SubCommand> optionalSubCommand = getSubCommand(args[0]);
+            if (optionalSubCommand.isEmpty())
+                return List.of();
+            SubCommand subCommand = optionalSubCommand.get();
+            if (commandSender.hasPermission(subCommand.getPermission()))
                 res.addAll(subCommand.getTabComplete(commandSender, args).stream()
                         .filter(str -> str.toLowerCase().startsWith(args[args.length - 1].toLowerCase()))
                         .toList());
@@ -90,10 +95,9 @@ public class StaffUtilCommand implements CommandExecutor, TabExecutor {
         return subCommands;
     }
 
-    private SubCommand getSubCommand(String cmdName) {
+    public Optional<SubCommand> getSubCommand(String cmdName) {
         return subCommands.stream()
                 .filter(subCommand -> subCommand.getName().equals(cmdName))
-                .findFirst()
-                .orElse(null);
+                .findFirst();
     }
 }
