@@ -9,7 +9,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -28,7 +27,7 @@ public class StaffUtilCommand implements CommandExecutor, TabExecutor {
         command.setTabCompleter(this);
         command.setAliases(List.of("su"));
 
-        subCommands = Arrays.asList(
+        subCommands = new ArrayList<>(List.of(
                 new Reload(staffUtils),
                 new Top(),
                 new ItemName(),
@@ -37,7 +36,7 @@ public class StaffUtilCommand implements CommandExecutor, TabExecutor {
                 new Uppies(),
                 new Shake(),
                 new Sudo()
-        );
+        ));
     }
 
     @Override
@@ -99,5 +98,12 @@ public class StaffUtilCommand implements CommandExecutor, TabExecutor {
         return subCommands.stream()
                 .filter(subCommand -> subCommand.getName().equals(cmdName))
                 .findFirst();
+    }
+
+    public void addSubCommand(SubCommand subCommand) {
+        if (subCommands.stream().anyMatch(entry -> entry.getName().equalsIgnoreCase(subCommand.getName()))) {
+            return;
+        }
+        subCommands.add(subCommand);
     }
 }

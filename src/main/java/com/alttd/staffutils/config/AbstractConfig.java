@@ -107,6 +107,12 @@ abstract class AbstractConfig {
         return yaml.getInt(path, yaml.getInt(path));
     }
 
+    public long getLong(String prefix, String path, long def) {
+        path = prefix + path;
+        yaml.addDefault(path, def);
+        return yaml.getLong(path, yaml.getLong(path));
+    }
+
     double getDouble(String prefix, String path, double def) {
         path = prefix + path;
         yaml.addDefault(path, def);

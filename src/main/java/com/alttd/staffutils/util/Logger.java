@@ -14,7 +14,7 @@ public class Logger {
     }
 
     public void debug(String debug, String... variables) {
-        if (!Config.SETTINGS.DEBUG)
+        if (!Config.LOGGING.DEBUG)
             return;
         logger.info(TEAL + replace(debug, variables) + RESET);
     }
@@ -24,7 +24,7 @@ public class Logger {
     }
 
     public void warning(String warning, String... variables) {
-        if (!Config.SETTINGS.WARNINGS)
+        if (!Config.LOGGING.WARNINGS)
             return;
         logger.warning(replace(warning, variables));
     }

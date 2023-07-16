@@ -35,6 +35,7 @@ public class Messages extends AbstractConfig {
         public static String RIDE = "<green>Ride the entity you're looking at: <gold>/su ride</gold></green>";
         public static String UPPIES = "<green>Carry the entity you're looking at: <gold>/su uppies</gold></green>";
         public static String SHAKE = "<green>Shake of all your passengers: <gold>/su shake</gold></green>";
+        public static String PATROL = "<green>Patrol players: <gold>/su patrol</gold></green>";
 
         @SuppressWarnings("unused")
         private static void load() {
@@ -46,6 +47,7 @@ public class Messages extends AbstractConfig {
             RIDE = config.getString(prefix, "ride", RIDE);
             UPPIES = config.getString(prefix, "uppies", UPPIES);
             SHAKE = config.getString(prefix, "shake", SHAKE);
+            PATROL = config.getString(prefix, "patrol", PATROL);
         }
     }
 
@@ -55,12 +57,14 @@ public class Messages extends AbstractConfig {
         public static String NO_PERMISSION = "<red>You don't have permission for this command</red>";
         public static String PLAYER_ONLY = "<red>This command can only be executed as a player</red>";
         public static String MUST_HOLD_ITEM = "<red>You must be holding an item to use this command.</red>";
+        public static String PLAYER_NOT_ONLINE = "<red>Player [<player>] is not online</red>";
 
         @SuppressWarnings("unused")
         private static void load() {
             NO_PERMISSION = config.getString(prefix, "no-permission", NO_PERMISSION);
             PLAYER_ONLY = config.getString(prefix, "player-only", PLAYER_ONLY);
             MUST_HOLD_ITEM = config.getString(prefix, "must-hold-item", MUST_HOLD_ITEM);
+            PLAYER_NOT_ONLINE = config.getString(prefix, "player-not-online", PLAYER_NOT_ONLINE);
         }
     }
 
@@ -172,6 +176,30 @@ public class Messages extends AbstractConfig {
 
         @SuppressWarnings("unused")
         private static void load() {
+            INVALID_PLAYER = config.getString(prefix, "invalid-player", INVALID_PLAYER);
+            CAN_NOT_SUDO_THIS_PLAYER = config.getString(prefix, "can-not-sudo-this-player", CAN_NOT_SUDO_THIS_PLAYER);
+            SUCCESS = config.getString(prefix, "success", SUCCESS);
+        }
+    }
+
+    public static class PATROL {
+        private static final String prefix = "su-command.patrol.";
+        public static String NO_PLAYERS_TO_PATROL = "<red>Found no players to patrol</red>";
+        public static String PATROLLING_PLAYER = "<green>Now patrolling <player>. Last patrol: <last_patrol>.";
+        public static String LIST_PLAYERS_TO_PATROL = "<green>Players that haven't been patrolled for <minutes> minutes:\n<players>";
+        public static String PLAYER_PART = "<player>";
+        public static String PLAYER_PART_SEPARATOR = ", ";
+        public static String CAN_NOT_PATROL_THIS_PLAYER = "<red>You can't patrol <player></red>";
+
+
+        @SuppressWarnings("unused")
+        private static void load() {
+            NO_PLAYERS_TO_PATROL = config.getString(prefix, "no-players-to-patrol", NO_PLAYERS_TO_PATROL);
+            PATROLLING_PLAYER = config.getString(prefix, "patrolling-player", PATROLLING_PLAYER);
+            LIST_PLAYERS_TO_PATROL = config.getString(prefix, "list-players-to-patrol", LIST_PLAYERS_TO_PATROL);
+            PLAYER_PART = config.getString(prefix, "player-part", PLAYER_PART);
+            PLAYER_PART_SEPARATOR = config.getString(prefix, "player-part-separator", PLAYER_PART_SEPARATOR);
+            CAN_NOT_PATROL_THIS_PLAYER = config.getString(prefix, "can-not-patrol-this-player", CAN_NOT_PATROL_THIS_PLAYER);
         }
     }
 }
