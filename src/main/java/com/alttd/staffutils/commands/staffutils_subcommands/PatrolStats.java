@@ -1,6 +1,5 @@
 package com.alttd.staffutils.commands.staffutils_subcommands;
 
-import com.alttd.staffutils.StaffUtils;
 import com.alttd.staffutils.commands.SubCommand;
 import com.alttd.staffutils.config.Config;
 import com.alttd.staffutils.config.Messages;
@@ -8,24 +7,15 @@ import org.bukkit.command.CommandSender;
 
 import java.util.List;
 
-public class Reload extends SubCommand {
-
-    private final StaffUtils staffUtils;
-
-    public Reload(StaffUtils staffUtils) {
-        this.staffUtils = staffUtils;
-    }
-
+public class PatrolStats extends SubCommand {
     @Override
     public boolean onCommand(CommandSender commandSender, String[] args) {
-        staffUtils.reloadConfigs();
-        commandSender.sendMiniMessage(Messages.RELOAD.RELOADED, null);
-        return true;
+        return false;
     }
 
     @Override
     public String getName() {
-        return Config.COMMAND_NAME.RELOAD;
+        return Config.COMMAND_NAME.PATROL_STATS;
     }
 
     @Override
@@ -35,6 +25,6 @@ public class Reload extends SubCommand {
 
     @Override
     public String getHelpMessage() {
-        return Messages.HELP.RELOAD;
+        return Messages.HELP.PATROL_STATS;
     }
 }

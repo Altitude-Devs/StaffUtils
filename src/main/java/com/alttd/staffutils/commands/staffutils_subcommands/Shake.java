@@ -1,6 +1,7 @@
 package com.alttd.staffutils.commands.staffutils_subcommands;
 
 import com.alttd.staffutils.commands.SubCommand;
+import com.alttd.staffutils.config.Config;
 import com.alttd.staffutils.config.Messages;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
@@ -34,7 +35,7 @@ public class Shake extends SubCommand {
 
     @Override
     public String getName() {
-        return "shake";
+        return Config.COMMAND_NAME.SHAKE;
     }
 
     @Override

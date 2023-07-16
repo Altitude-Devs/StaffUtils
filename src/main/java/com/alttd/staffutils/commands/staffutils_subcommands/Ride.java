@@ -1,6 +1,7 @@
 package com.alttd.staffutils.commands.staffutils_subcommands;
 
 import com.alttd.staffutils.commands.SubCommand;
+import com.alttd.staffutils.config.Config;
 import com.alttd.staffutils.config.Messages;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.command.CommandSender;
@@ -39,7 +40,7 @@ public class Ride extends SubCommand {
 
     @Override
     public String getName() {
-        return "ride";
+        return Config.COMMAND_NAME.RIDE;
     }
 
     @Override

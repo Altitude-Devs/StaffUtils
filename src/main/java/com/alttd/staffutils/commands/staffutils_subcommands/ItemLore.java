@@ -1,6 +1,7 @@
 package com.alttd.staffutils.commands.staffutils_subcommands;
 
 import com.alttd.staffutils.commands.SubCommand;
+import com.alttd.staffutils.config.Config;
 import com.alttd.staffutils.config.Messages;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.JoinConfiguration;
@@ -101,7 +102,7 @@ public class ItemLore extends SubCommand {
 
     @Override
     public String getName() {
-        return "itemlore";
+        return Config.COMMAND_NAME.ITEM_LORE;
     }
 
     @Override

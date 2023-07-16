@@ -86,4 +86,44 @@ public class Config extends AbstractConfig {
         }
 
     }
+
+    public static class PERMISSIONS {
+        private static final String prefix = "permissions.";
+
+        public static String BASE = "staffutils.";
+
+        @SuppressWarnings("unused")
+        private static void load() {
+            BASE = config.getString(prefix, "base", BASE);
+        }
+    }
+
+    public static class COMMAND_NAME {
+        private static final String prefix = "command-name.";
+
+        public static String ITEM_LORE = "itemlore";
+        public static String ITEM_NAME = "itemname";
+        public static String PATROL = "patrol";
+        public static String PATROL_STATS = "patrolstats";
+        public static String RELOAD = "reload";
+        public static String RIDE = "ride";
+        public static String SHAKE = "shake";
+        public static String SUDO = "sudo";
+        public static String TOP = "top";
+        public static String UPPIES = "uppies";
+
+        @SuppressWarnings("unused")
+        private static void load() {
+            ITEM_LORE = config.getString(prefix, "item-lore", ITEM_LORE);
+            ITEM_NAME = config.getString(prefix, "item-name", ITEM_NAME);
+            PATROL = config.getString(prefix, "patrol", PATROL);
+            PATROL_STATS = config.getString(prefix, "patrol-stats", PATROL_STATS);
+            RELOAD = config.getString(prefix, "reload", RELOAD);
+            RIDE = config.getString(prefix, "ride", RIDE);
+            SHAKE = config.getString(prefix, "shake", SHAKE);
+            SUDO = config.getString(prefix, "sudo", SUDO);
+            TOP = config.getString(prefix, "top", TOP);
+            UPPIES = config.getString(prefix, "uppies", UPPIES);
+        }
+    }
 }

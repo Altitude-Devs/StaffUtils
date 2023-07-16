@@ -1,6 +1,7 @@
 package com.alttd.staffutils.commands.staffutils_subcommands;
 
 import com.alttd.staffutils.commands.SubCommand;
+import com.alttd.staffutils.config.Config;
 import com.alttd.staffutils.config.Messages;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -52,7 +53,7 @@ public class ItemName extends SubCommand {
 
     @Override
     public String getName() {
-        return "itemname";
+        return Config.COMMAND_NAME.ITEM_NAME;
     }
 
     @Override

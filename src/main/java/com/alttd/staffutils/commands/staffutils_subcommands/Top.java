@@ -1,6 +1,7 @@
 package com.alttd.staffutils.commands.staffutils_subcommands;
 
 import com.alttd.staffutils.commands.SubCommand;
+import com.alttd.staffutils.config.Config;
 import com.alttd.staffutils.config.Messages;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
@@ -32,7 +33,7 @@ public class Top extends SubCommand {
 
     @Override
     public String getName() {
-        return "top";
+        return Config.COMMAND_NAME.TOP;
     }
 
     @Override
