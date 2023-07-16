@@ -1,7 +1,11 @@
 package com.alttd.staffutils.tasks;
 
 import com.alttd.staffutils.config.Config;
+import com.alttd.staffutils.config.Messages;
 import com.alttd.staffutils.util.PlayerPatrolService;
+import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
+import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import org.bukkit.Bukkit;
 
 import java.time.Duration;
@@ -20,12 +24,19 @@ public class NotifyPatrol extends Task {
     @Override
     void execute() {
         lastExecution = Instant.now();
-        int playersToPatrol = playerPatrolService.getPlayersToPatrol(Config.PATROL.MAX_UN_PATROLLED_DURATION, "staffutils.patrol.bypass").size();
+
+        String patrolPermission = Config.PERMISSIONS.BASE + Config.COMMAND_NAME.PATROL;
+        int playersToPatrol = playerPatrolService.getPlayersToPatrol(Config.PATROL.MAX_UN_PATROLLED_DURATION, patrolPermission+ ".bypass").size();
         int onlinePlayers = Bukkit.getOnlinePlayers().size();
+
         if (Config.PATROL.UN_PATROLLED_PERCENT != 0 && (((double) playersToPatrol / onlinePlayers) * 100) < Config.PATROL.UN_PATROLLED_PERCENT) {
             return;
         }
 
+        Bukkit.broadcast(MiniMessage.miniMessage().deserialize(Messages.PATROL.PATROL_REMINDER, TagResolver.resolver(
+                Placeholder.parsed("amount", String.valueOf(playersToPatrol)),
+                Placeholder.parsed("time", String.valueOf(Config.PATROL.MAX_UN_PATROLLED_DURATION.toMinutes()))
+        )), patrolPermission);
     }
 
     @Override

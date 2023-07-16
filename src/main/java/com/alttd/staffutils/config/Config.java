@@ -82,6 +82,7 @@ public class Config extends AbstractConfig {
             MAX_UN_PATROLLED_DURATION = Duration.ofMinutes(config.getLong(prefix, "max-un-patrolled-time-minutes", MAX_UN_PATROLLED_DURATION.toMinutes()));
             REMINDER_FREQUENCY = Duration.ofMinutes(config.getLong(prefix, "reminder-frequency-minutes", REMINDER_FREQUENCY.toMinutes()));
             UN_PATROLLED_PERCENT = config.getInt(prefix, "un-patrolled-percent", UN_PATROLLED_PERCENT);
+            UN_PATROLLED_PERCENT = Math.min(100, Math.max(0, UN_PATROLLED_PERCENT));
             SAVE_STATS_FREQUENCY = Duration.ofMinutes(config.getLong(prefix, "save-stats-frequency-minutes", SAVE_STATS_FREQUENCY.toMinutes()));
         }
 

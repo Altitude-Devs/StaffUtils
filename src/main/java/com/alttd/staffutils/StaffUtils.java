@@ -6,9 +6,11 @@ import com.alttd.staffutils.config.Config;
 import com.alttd.staffutils.config.Messages;
 import com.alttd.staffutils.database.DatabaseManager;
 import com.alttd.staffutils.events.AliasOverwrite;
+import com.alttd.staffutils.tasks.NotifyPatrol;
 import com.alttd.staffutils.tasks.SaveStaffPatrolActions;
 import com.alttd.staffutils.tasks.TaskManager;
 import com.alttd.staffutils.util.Logger;
+import com.alttd.staffutils.util.PlayerPatrolService;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.concurrent.Executors;
@@ -49,8 +51,12 @@ public final class StaffUtils extends JavaPlugin {
         TaskManager taskManager = TaskManager.getTaskManager();
 
         SaveStaffPatrolActions saveStaffPatrolActions = new SaveStaffPatrolActions(logger);
-        staffUtilCommand.addSubCommand(new Patrol(saveStaffPatrolActions));
+        PlayerPatrolService playerPatrolService = new PlayerPatrolService(saveStaffPatrolActions);
+
+        staffUtilCommand.addSubCommand(new Patrol(playerPatrolService));
+
         taskManager.addTask(saveStaffPatrolActions);
+        taskManager.addTask(new NotifyPatrol(playerPatrolService));
 
         executor = Executors.newScheduledThreadPool(1);
         executor.scheduleAtFixedRate(taskManager, Config.TASKS.CHECK_EXECUTE_FREQUENCY_MINUTES, Config.TASKS.CHECK_EXECUTE_FREQUENCY_MINUTES, TimeUnit.MINUTES);

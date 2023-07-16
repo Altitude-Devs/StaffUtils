@@ -36,6 +36,7 @@ public class Messages extends AbstractConfig {
         public static String UPPIES = "<green>Carry the entity you're looking at: <gold>/su uppies</gold></green>";
         public static String SHAKE = "<green>Shake of all your passengers: <gold>/su shake</gold></green>";
         public static String PATROL = "<green>Patrol players: <gold>/su patrol</gold></green>";
+        public static String PATROL_STATS = "<green>See patrol stats of staff: <gold>/su patrolstats <player></gold></green>";
 
         @SuppressWarnings("unused")
         private static void load() {
@@ -189,7 +190,9 @@ public class Messages extends AbstractConfig {
         public static String LIST_PLAYERS_TO_PATROL = "<green>Players that haven't been patrolled for <minutes> minutes:\n<players>";
         public static String PLAYER_PART = "<player>";
         public static String PLAYER_PART_SEPARATOR = ", ";
-        public static String CAN_NOT_PATROL_THIS_PLAYER = "<red>You can't patrol <player></red>";
+        public static String CAN_NOT_PATROL_SELF = "<red>You can't patrol <player></red>";
+        public static String FAILED_TO_PATROL_PLAYER = "<red>Failed to patrol <player></red>";
+        public static String PATROL_REMINDER = "<rainbow>There are <amount> players that have not been patrolled for at least <time> minutes!</rainbow>";
 
 
         @SuppressWarnings("unused")
@@ -199,7 +202,8 @@ public class Messages extends AbstractConfig {
             LIST_PLAYERS_TO_PATROL = config.getString(prefix, "list-players-to-patrol", LIST_PLAYERS_TO_PATROL);
             PLAYER_PART = config.getString(prefix, "player-part", PLAYER_PART);
             PLAYER_PART_SEPARATOR = config.getString(prefix, "player-part-separator", PLAYER_PART_SEPARATOR);
-            CAN_NOT_PATROL_THIS_PLAYER = config.getString(prefix, "can-not-patrol-this-player", CAN_NOT_PATROL_THIS_PLAYER);
+            CAN_NOT_PATROL_SELF = config.getString(prefix, "can-not-patrol-this-player", CAN_NOT_PATROL_SELF);
+            FAILED_TO_PATROL_PLAYER = config.getString(prefix, "failed-to-patrol-player", FAILED_TO_PATROL_PLAYER);
         }
     }
 }
