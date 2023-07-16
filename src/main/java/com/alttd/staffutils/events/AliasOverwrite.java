@@ -46,11 +46,14 @@ public class AliasOverwrite implements Listener {
     }
 
     private void processAsNormal(PlayerCommandPreprocessEvent event, String[] args) {
-        Optional<SubCommand> optionalSubCommand = staffUtilCommand.getSubCommand(args[0]);
+        if (args[0].length() < 2) {
+            return;
+        }
+        Optional<SubCommand> optionalSubCommand = staffUtilCommand.getSubCommand(args[0].substring(1));
         if (optionalSubCommand.isEmpty()) {
             return;
         }
-        String newCommand = "staffutils " + event.getMessage().substring(1);
+        String newCommand = "/staffutils " + event.getMessage().substring(1);
         event.setMessage(newCommand);
     }
 
