@@ -1,7 +1,7 @@
 package com.alttd.staffutils.util;
 
 import com.alttd.staffutils.config.Config;
-import com.alttd.staffutils.tasks.SaveStaffPatrolActions;
+import com.alttd.staffutils.auto_tasks.SaveStaffPatrolActions;
 import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;

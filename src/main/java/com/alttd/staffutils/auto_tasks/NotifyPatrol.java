@@ -1,4 +1,4 @@
-package com.alttd.staffutils.tasks;
+package com.alttd.staffutils.auto_tasks;
 
 import com.alttd.staffutils.config.Config;
 import com.alttd.staffutils.config.Messages;

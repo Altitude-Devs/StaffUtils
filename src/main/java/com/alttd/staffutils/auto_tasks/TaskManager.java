@@ -1,4 +1,4 @@
-package com.alttd.staffutils.tasks;
+package com.alttd.staffutils.auto_tasks;
 
 import java.util.LinkedList;
 
