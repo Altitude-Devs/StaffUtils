@@ -41,7 +41,7 @@ public class PlayerPatrolService {
 
     public synchronized Optional<Player> getPlayerToPatrol(@NotNull String username, @NotNull String bypassPermission) {
         return Bukkit.getOnlinePlayers().stream()
-                .filter(onlinePlayer -> onlinePlayer.getName().equals(username))
+                .filter(onlinePlayer -> onlinePlayer.getName().equalsIgnoreCase(username))
                 .filter(onlinePlayer -> !onlinePlayer.hasPermission(bypassPermission))
                 .map(onlinePlayer -> (Player) onlinePlayer)
                 .findFirst();

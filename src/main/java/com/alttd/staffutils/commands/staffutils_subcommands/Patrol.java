@@ -60,6 +60,10 @@ public class Patrol extends SubCommand {
             return;
         }
 
+        patrolToPlayer(player, patrolPlayer);
+    }
+
+    private void patrolToPlayer(Player player, Player patrolPlayer) {
         Instant lastPatrol = playerPatrolService.getLastPatrolled(patrolPlayer);
         if (playerPatrolService.patrolPlayer(player, patrolPlayer)) {
             player.sendMiniMessage(Messages.PATROL.PATROLLING_PLAYER, TagResolver.resolver(
@@ -80,16 +84,7 @@ public class Patrol extends SubCommand {
         }
 
         Player patrolPlayer = nextPlayer.get();
-        Instant lastPatrol = playerPatrolService.getLastPatrolled(patrolPlayer);
-
-        if (playerPatrolService.patrolPlayer(player, patrolPlayer)) {
-            player.sendMiniMessage(Messages.PATROL.PATROLLING_PLAYER, TagResolver.resolver(
-                    Placeholder.component("player", patrolPlayer.displayName()),
-                    Placeholder.parsed("last_patrol", (lastPatrol == null ? "previous reboot" : Duration.between(lastPatrol, Instant.now()).toMinutes() + " minutes ago"))
-            ));
-        } else {
-            player.sendMiniMessage(Messages.PATROL.FAILED_TO_PATROL_PLAYER, Placeholder.component("player", patrolPlayer.displayName()));
-        }
+        patrolToPlayer(player, patrolPlayer);
     }
 
     private void listPlayersToPatrol(CommandSender commandSender) {
