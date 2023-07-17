@@ -49,7 +49,7 @@ public class PlayerPatrolService {
 
     public synchronized Optional<Player> getNextPlayer(@NotNull String bypassPermission) {
         return getPlayersToPatrol(Config.PATROL.MAX_UN_PATROLLED_DURATION, bypassPermission).stream()
-                .min(Comparator.comparing(mapPlayer -> patrolMap.get(mapPlayer.getUniqueId())));
+                .min(Comparator.comparing(mapPlayer -> patrolMap.getOrDefault(mapPlayer.getUniqueId(), Instant.MIN)));
     }
 
     public List<Player> getPlayersToPatrol(@NotNull Duration lastPatrolled, @Nullable String bypassPermission) {
