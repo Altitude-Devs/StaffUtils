@@ -35,7 +35,8 @@ public class StaffUtilCommand implements CommandExecutor, TabExecutor {
                 new Ride(),
                 new Uppies(),
                 new Shake(),
-                new Sudo()
+                new Sudo(),
+                new PatrolStats(staffUtils)
         ));
     }
 

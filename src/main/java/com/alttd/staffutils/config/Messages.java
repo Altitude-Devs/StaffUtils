@@ -185,6 +185,7 @@ public class Messages extends AbstractConfig {
 
     public static class PATROL {
         private static final String prefix = "su-command.patrol.";
+
         public static String NO_PLAYERS_TO_PATROL = "<red>Found no players to patrol</red>";
         public static String PATROLLING_PLAYER = "<green>Now patrolling <player>. Last patrol: <last_patrol>.";
         public static String LIST_PLAYERS_TO_PATROL = "<green>Players that haven't been patrolled for <minutes> minutes:\n<players>";
@@ -204,6 +205,19 @@ public class Messages extends AbstractConfig {
             PLAYER_PART_SEPARATOR = config.getString(prefix, "player-part-separator", PLAYER_PART_SEPARATOR);
             CAN_NOT_PATROL_SELF = config.getString(prefix, "can-not-patrol-this-player", CAN_NOT_PATROL_SELF);
             FAILED_TO_PATROL_PLAYER = config.getString(prefix, "failed-to-patrol-player", FAILED_TO_PATROL_PLAYER);
+            PATROL_REMINDER = config.getString(prefix, "patrol-reminder", PATROL_REMINDER);
+        }
+    }
+
+    public static class PATROL_STATS {
+        private static final String prefix = "su-command.patrol_stats.";
+        public static String PART = "<green><player> has patrolled <amount> times</green>";
+        public static String MESSAGE = "<green>Showing patrol stats for the last <time>\n<players>";
+
+
+        @SuppressWarnings("unused")
+        private static void load() {
+            PART = config.getString(prefix, "part", PART);
         }
     }
 }
