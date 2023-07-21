@@ -28,7 +28,7 @@ public class PlayerPatrolService {
 
     public synchronized boolean patrolPlayer(Player patroller, Player toPatrol) {
         boolean teleport = patroller.teleport(toPatrol);
-        if (teleport) {
+        if (teleport && !patroller.hasPermission(Config.PERMISSIONS.BASE + Config.COMMAND_NAME.PATROL + ".ignore-count")) {
             patrolMap.put(toPatrol.getUniqueId(), Instant.now());
             patrolActions.addPatrolAction(patroller.getUniqueId());
         }
@@ -48,7 +48,7 @@ public class PlayerPatrolService {
     }
 
     public synchronized Optional<Player> getNextPlayer(@NotNull String bypassPermission) {
-        return getPlayersToPatrol(Config.PATROL.MAX_UN_PATROLLED_DURATION, bypassPermission).stream()
+        return getPlayersToPatrol(Duration.ofMillis(0), bypassPermission).stream()
                 .min(Comparator.comparing(mapPlayer -> patrolMap.getOrDefault(mapPlayer.getUniqueId(), Instant.MIN)));
     }
 
