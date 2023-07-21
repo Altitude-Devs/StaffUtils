@@ -13,7 +13,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -48,7 +47,7 @@ public class LoadPatrolStats extends BukkitRunnable {
 
     @Override
     public void run() {
-        String sql = "SELECT * FROM patrol_stats WHERE patrol_stats.time_millis >= ?";
+        String sql = "SELECT uuid,time_millis,SUM(patrol_amount) AS patrol_amount FROM patrol_stats GROUP BY uuid WHERE patrol_stats.time_millis >= ?";
         if (!allPlayers)
             sql += " AND uuid = ?";
 
