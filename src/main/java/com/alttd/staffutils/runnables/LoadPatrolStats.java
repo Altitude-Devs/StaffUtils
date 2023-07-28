@@ -63,13 +63,13 @@ public class LoadPatrolStats extends BukkitRunnable {
             while (resultSet.next()) {
                 UUID uuid = UUID.fromString(resultSet.getString("uuid"));
                 int patrolAmount = resultSet.getInt("patrol_amount");
-                Player player = Bukkit.getServer().getPlayer(uuid);
+                OfflinePlayer patrolStatsPlayer = Bukkit.getServer().getOfflinePlayer(uuid);
 
                 TagResolver.Single playerTag;
-                if (player == null)
+                if (patrolStatsPlayer.getName() == null)
                     playerTag = Placeholder.parsed("player", uuid.toString());
                 else
-                    playerTag = Placeholder.component("player", player.displayName());
+                    playerTag = Placeholder.parsed("player", patrolStatsPlayer.getName());
 
                 components.add(miniMessage.deserialize(Messages.PATROL_STATS.PART, TagResolver.resolver(
                         playerTag, Placeholder.parsed("amount", String.valueOf(patrolAmount))

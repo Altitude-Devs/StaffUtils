@@ -37,6 +37,7 @@ public class Messages extends AbstractConfig {
         public static String SHAKE = "<green>Shake of all your passengers: <gold>/su shake</gold></green>";
         public static String PATROL = "<green>Patrol players: <gold>/su patrol</gold></green>";
         public static String PATROL_STATS = "<green>See patrol stats of staff: <gold>/su patrolstats <player></gold></green>";
+        public static String SUDO = "<green>Sudo a player: <gold>/su sudo <player> <command></gold></green>";
 
         @SuppressWarnings("unused")
         private static void load() {
@@ -49,6 +50,8 @@ public class Messages extends AbstractConfig {
             UPPIES = config.getString(prefix, "uppies", UPPIES);
             SHAKE = config.getString(prefix, "shake", SHAKE);
             PATROL = config.getString(prefix, "patrol", PATROL);
+            PATROL_STATS = config.getString(prefix, "patrol-stats", PATROL_STATS);
+            SUDO = config.getString(prefix, "sudo", SUDO);
         }
     }
 
@@ -212,12 +215,13 @@ public class Messages extends AbstractConfig {
     public static class PATROL_STATS {
         private static final String prefix = "su-command.patrol_stats.";
         public static String PART = "<green><player> has patrolled <amount> times</green>";
-        public static String MESSAGE = "<green>Showing patrol stats for the last <time>\n<players>";
+        public static String MESSAGE = "<green>Showing patrol stats for the last <days> days\n<players>";
 
 
         @SuppressWarnings("unused")
         private static void load() {
             PART = config.getString(prefix, "part", PART);
+            MESSAGE = config.getString(prefix, "message", MESSAGE);
         }
     }
 }

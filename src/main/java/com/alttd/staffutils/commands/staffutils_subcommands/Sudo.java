@@ -26,7 +26,7 @@ public class Sudo extends SubCommand {
     }
 
     private Optional<List<Player>> getPlayersToSudo(CommandSender commandSender, String[] args) {
-        if (args[2].equals("*")) {
+        if (args[1].equals("*")) {
             return Optional.of(commandSender.getServer().getOnlinePlayers().stream()
                     .filter(player -> !player.hasPermission(getPermission() + ".prevent"))
                     .collect(Collectors.toList()));
@@ -79,6 +79,6 @@ public class Sudo extends SubCommand {
 
     @Override
     public String getHelpMessage() {
-        return null;
+        return Messages.HELP.SUDO;
     }
 }
