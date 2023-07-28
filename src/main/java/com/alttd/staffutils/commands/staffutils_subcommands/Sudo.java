@@ -51,7 +51,7 @@ public class Sudo extends SubCommand {
         if (playersToSudo.isEmpty()) {
             return;
         }
-        playersToSudo.get().forEach(player -> player.sendMessage(substring));
+        playersToSudo.get().forEach(player -> player.chat(substring));
         commandSender.sendMiniMessage(Messages.SUDO.SUCCESS, Placeholder.parsed("player", args[1]));
     }
 
