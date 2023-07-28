@@ -76,7 +76,7 @@ public class LoadPatrolStats extends BukkitRunnable {
                 )));
             }
 
-            Component join = Component.join(JoinConfiguration.commas(true), components);
+            Component join = Component.join(JoinConfiguration.newlines(), components);
             commandSender.sendMiniMessage(Messages.PATROL_STATS.MESSAGE, TagResolver.resolver(
                     Placeholder.component("players", join),
                     Placeholder.parsed("days", String.valueOf(duration.toDays()))
