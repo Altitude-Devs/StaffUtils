@@ -15,9 +15,9 @@ import java.util.stream.Collectors;
 public class Sudo extends SubCommand {
     @Override
     public boolean onCommand(CommandSender commandSender, String[] args) {
-        if (args.length <= 3)
+        if (args.length <= 2)
             return false;
-        if (args[2].equalsIgnoreCase("c:")) {
+        if (args.length >= 4 && args[2].equalsIgnoreCase("c:")) {
             sendText(commandSender, args);
             return true;
         }
