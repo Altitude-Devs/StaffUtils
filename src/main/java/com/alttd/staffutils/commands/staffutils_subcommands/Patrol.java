@@ -95,6 +95,8 @@ public class Patrol extends SubCommand {
         Component playersPart = Component.join(JoinConfiguration.separator(miniMessage.deserialize(Messages.PATROL.PLAYER_PART_SEPARATOR)), playerPartList);
 
         commandSender.sendMiniMessage(Messages.PATROL.LIST_PLAYERS_TO_PATROL, TagResolver.resolver(
+                Placeholder.parsed("un_patrolled_players", String.valueOf(playerPartList.size())),
+                Placeholder.parsed("online_players", String.valueOf(commandSender.getServer().getOnlinePlayers().size())),
                 Placeholder.parsed("minutes", String.valueOf(Config.PATROL.MAX_UN_PATROLLED_DURATION.toMinutes())),
                 Placeholder.component("players", playersPart)
         ));

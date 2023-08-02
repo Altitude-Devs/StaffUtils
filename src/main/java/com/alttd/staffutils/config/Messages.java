@@ -191,7 +191,7 @@ public class Messages extends AbstractConfig {
 
         public static String NO_PLAYERS_TO_PATROL = "<red>Found no players to patrol</red>";
         public static String PATROLLING_PLAYER = "<green>Now patrolling <player>. Last patrol: <last_patrol>.";
-        public static String LIST_PLAYERS_TO_PATROL = "<green>Players that haven't been patrolled for <minutes> minutes:\n<players>";
+        public static String LIST_PLAYERS_TO_PATROL = "<green><un_patrolled_players>/<online_players> players haven't been patrolled for <minutes> minutes:\n<players>";
         public static String PLAYER_PART = "<player>";
         public static String PLAYER_PART_SEPARATOR = ", ";
         public static String CAN_NOT_PATROL_SELF = "<red>You can't patrol <player></red>";
