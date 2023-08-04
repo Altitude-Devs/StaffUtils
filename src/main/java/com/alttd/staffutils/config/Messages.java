@@ -162,6 +162,8 @@ public class Messages extends AbstractConfig {
         private static final String prefix = "su-command.shake.";
         public static String NO_PASSENGERS = "<red>You have no passengers</red>";
         public static String DONE = "<green>You shook off all your passengers</green>";
+        public static String DONE_OTHER = "<green>You shook off all <player>'s passengers</green>";
+        public static String DONE_BY_OTHER = "<green><player> shook off all your passengers</green>";
 
 
         @SuppressWarnings("unused")
