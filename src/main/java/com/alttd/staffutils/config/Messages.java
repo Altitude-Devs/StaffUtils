@@ -170,6 +170,8 @@ public class Messages extends AbstractConfig {
         private static void load() {
             NO_PASSENGERS = config.getString(prefix, "no-passengers", NO_PASSENGERS);
             DONE = config.getString(prefix, "done", DONE);
+            DONE_OTHER = config.getString(prefix, "done-other", DONE_OTHER);
+            DONE_BY_OTHER = config.getString(prefix, "done-by-other", DONE_BY_OTHER);
         }
     }
 
