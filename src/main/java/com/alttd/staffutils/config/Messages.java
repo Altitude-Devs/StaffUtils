@@ -114,7 +114,7 @@ public class Messages extends AbstractConfig {
 
     public static class ITEM_NAME {
         private static final String prefix = "su-command.item-name.";
-        public static String DONE = "<green>Set new item name to:</green> <lore>";
+        public static String DONE = "<green>Set new item name to:</green> <name>";
 
         @SuppressWarnings("unused")
         private static void load() {

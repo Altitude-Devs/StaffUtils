@@ -5,6 +5,7 @@ import com.alttd.staffutils.config.Config;
 import com.alttd.staffutils.config.Messages;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.JoinConfiguration;
+import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Material;
@@ -91,7 +92,7 @@ public class ItemLore extends SubCommand {
         }
 
         if (lore.size() == line) {
-            lore.add(miniMessage.deserialize(loreText));
+            lore.add(miniMessage.deserialize(loreText).decoration(TextDecoration.ITALIC, false));
         } else {
             lore.set(line, miniMessage.deserialize(loreText));
         }
