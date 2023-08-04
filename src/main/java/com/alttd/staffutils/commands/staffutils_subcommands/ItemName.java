@@ -4,6 +4,7 @@ import com.alttd.staffutils.commands.SubCommand;
 import com.alttd.staffutils.config.Config;
 import com.alttd.staffutils.config.Messages;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Material;
@@ -44,7 +45,7 @@ public class ItemName extends SubCommand {
         else
             name = String.join(" ", Arrays.copyOfRange(args, 1, args.length));
 
-        Component newName = miniMessage.deserialize(name);
+        Component newName = miniMessage.deserialize(name).decoration(TextDecoration.ITALIC, false);
         itemMeta.displayName(newName);
         itemStack.setItemMeta(itemMeta);
         player.sendMiniMessage(Messages.ITEM_NAME.DONE, Placeholder.component("name", newName));
