@@ -46,6 +46,7 @@ public class Messages extends AbstractConfig {
             RELOAD = config.getString(prefix, "reload", RELOAD);
             TOP = config.getString(prefix, "top", TOP);
             ITEM_NAME = config.getString(prefix, "item-name", ITEM_NAME);
+            ITEM_LORE = config.getString(prefix, "item-lore", ITEM_LORE);
             RIDE = config.getString(prefix, "ride", RIDE);
             UPPIES = config.getString(prefix, "uppies", UPPIES);
             SHAKE = config.getString(prefix, "shake", SHAKE);
