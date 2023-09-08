@@ -94,7 +94,7 @@ public class ItemLore extends SubCommand {
         if (lore.size() == line) {
             lore.add(miniMessage.deserialize(loreText).decoration(TextDecoration.ITALIC, false));
         } else {
-            lore.set(line, miniMessage.deserialize(loreText));
+            lore.set(line, miniMessage.deserialize(loreText).decoration(TextDecoration.ITALIC, false));
         }
 
         meta.lore(lore);
