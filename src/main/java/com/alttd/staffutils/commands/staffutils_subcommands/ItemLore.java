@@ -63,7 +63,7 @@ public class ItemLore extends SubCommand {
             String loreText = String.join(" ", Arrays.copyOfRange(args, 1, args.length));
             List<String> lore = Arrays.asList(loreText.split("\\\\n"));
             meta.lore(lore.stream()
-                    .map(miniMessage::deserialize)
+                    .map(line -> miniMessage.deserialize(line).decoration(TextDecoration.ITALIC, false))
                     .collect(Collectors.toList()));
         }
 
